@@ -9,9 +9,7 @@
         <el-input placeholder="请填写车牌3" v-model="carid3" ></el-input>
         <el-input placeholder="请填写车牌4" v-model="carid4" ></el-input>
         <p v-text="data"></p>
-        <el-button round @click="reginster">注册</el-button>
-        <el-button round @click="sub">注册</el-button>
-
+        <el-button  @click="reginster">注册</el-button>
     </div>
 </template>
 
@@ -38,10 +36,6 @@ export default {
     mounted() {
     },  
     methods: {
-        sub() {
-        let carid = this.carid1+this.carid2+this.carid3+this.carid4
-        console.log(carid)
-        },
         reginster(){
             if(this.pwd != this.repwd){
                 this.data = "两次密码不一致"

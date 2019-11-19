@@ -16,6 +16,7 @@ export default new Router({
       path: '/',
       name: 'home',
       redirect: '/home'
+      // 默认页
     },
     {
       path:'/home',

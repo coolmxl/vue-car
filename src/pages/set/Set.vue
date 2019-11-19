@@ -27,7 +27,7 @@
                         <el-button size="small" type="primary">点击上传</el-button>
                         <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
                     </el-upload>
-                    <el-button style="width: 20%; margin-right: 10%;" type="primary" @click="submit">上传头像</el-button>
+                    <el-button style="width: 26%;margin-right: 4%;" type="primary" @click="submit">上传头像</el-button>
                 </div>
                 <el-button  class="btn-btn" type="primary"  @click="openDia(1)"  >修改车牌</el-button>
                 <el-button  class="btn-btn" style="margin-left: 1%;" type="success"  @click="openDia(2)">修改手机号</el-button>
@@ -53,7 +53,7 @@
                 <el-button type="primary" @click="getCode">确 定</el-button>
             </span>
         </el-dialog>
-                <el-dialog
+        <el-dialog
         title="修改车牌（第一个车牌为默认车牌）"
         :visible.sync="dialogVisible1"
         width="100%"
@@ -251,7 +251,10 @@ export default {
                         'Accept': 'application/json'
                     }
                 }).then((res)=>{
-                    if(res){
+                    if(res.data === 0){
+                        confirm("该号码不存在，请重新输入或注册新号~")
+                    }
+                    else{
                         this.recode = res.data
                     }
                 }).catch((err)=>{

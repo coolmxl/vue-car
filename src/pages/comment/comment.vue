@@ -274,7 +274,7 @@ export default {
 .comment{
 }
 .who-reply{
-  width 40%
+  width 77% !important
 }
 .comment-title 
   margin-top 3%

@@ -39,26 +39,13 @@
                     },
                     yAxis: [
                         {
-                          type: 'value',
-                          name: '用户',
-                          min: 0,
-                          max: 5,
-                          position: 'left',
-                          axisLine: {
-                              lineStyle: {
-                                  color: '#999'
-                              }
-                          },
-                          axisLabel: {
-                              formatter: '{value}'
-                          }
                         },
                         {
                           type: 'value',
                           name: '订单',
                           min: 0,
                           max: 5,
-                          position: 'right',
+                          position: 'left',
                           axisLine: {
                               lineStyle: {
                                   color: '#999'

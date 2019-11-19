@@ -2,7 +2,7 @@
     <div class="box">
         <el-upload
             class="upload-demo"
-            action="/api/rest/2.0/ocr/v1/license_plate?access_token=24.702852826d482c327fa91f0d0ec7925a.2592000.1573199629.282335-16643891"
+            action="/api/rest/2.0/ocr/v1/license_plate?access_token=24.a679b50aa9b2844522550dae71a4ce65.2592000.1575540104.282335-16643891"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :before-remove="beforeRemove"
@@ -10,17 +10,18 @@
             multiple
             :limit="1"
             :on-exceed="handleExceed"
-            :file-list="fileList">
+            >
             <el-button size="small" type="primary">点击上传</el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
         <!-- <input class="upload" type="file" name="file" @change="uploadPhoto($event)" style="width:80%;"> -->
-        <el-button type="primary" @click="Getdata" style="width:20%;margin-right: 10%;">停车</el-button>
+        <el-button type="primary" @click="Getdata" style="width:20%;margin-right: 2%;">停车</el-button>
         <!-- <el-button type="primary" @click="getInfo" style="width:20%;">停车php</el-button> -->
     </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import jsonp from 'jsonp';
 export default {
     data() {
         return {
@@ -130,21 +131,26 @@ export default {
                 _this.data = imgcode.replace(/^data:image\/\w+;base64,/, "")
             }
         },
-        Getdata() {
+        async Getdata() {
             // console.log(this.data)
             if(!this.data){
                 confirm("请选择文件");
                 return false;
             }
             let that = this
-            // console.log("ok")
-            // console.log("sasasas",that.data)
-            this.$http.post('/api/rest/2.0/ocr/v1/license_plate?access_token=24.702852826d482c327fa91f0d0ec7925a.2592000.1573199629.282335-16643891',
+            this.$http.post('/api/rest/2.0/ocr/v1/license_plate?access_token=24.6c68f5e033cb55736f845ea53ee58f3c.2592000.1576074316.282335-16643891',
                 {image:that.data},
                 {emulateJSON:true})
                 .then((response) => {
+                    // console.log(response);
                     that.msg = JSON.parse(response.bodyText)
                     that.carid = that.msg.words_result.number
+                    console.log(response);
+                    // console.log(that.msg.words_result.number instanceof Number);
+                    // if(that.msg.words_result.number instanceof Number){
+                    //     alert("请上传车牌照~")
+                    //     return false;
+                    // }
                     // localStorage.carid = that.msg.words_result.number
                     // console.log("ok 获取车牌成功"+that.carid)
                 }, (error) => {
@@ -197,4 +203,6 @@ export default {
     justify-content space-between
     align-items center
     margin-left 5%
+    .upload-demo
+        width 256px !important
 </style>

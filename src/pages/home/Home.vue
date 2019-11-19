@@ -3,7 +3,7 @@
         <!-- <Header/> -->
         <Btn/>
         <Remain/>
-        <section class="data_section" style="width:90%;">
+        <section class="data_section" style="width:100%;">
             <header class="section_title" >园区数据统计</header>
             <el-row :gutter="20" style="margin-bottom: 10px; display:flex">
                 <el-col :span="4"><div class="data_list today_head" style="width:143px;margin-left:40%;}"><span class="data_num head">当日数据：</span></div></el-col>
